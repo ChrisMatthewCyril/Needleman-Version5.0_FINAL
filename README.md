@@ -113,7 +113,7 @@ Directly quoting the NCBI, "A sequence in FASTA format begins with a single-line
 
 Simply put, it is a text file with sequences. Importantly, there might be multiple sequences of the same gene withing a file. Due to limitations on computing power, and for the sake of time, I've chosen to use the first sequence of each file. 
 
-## What is the Needleman Wunssche Algorithm?
+## What is the Needleman Wunsch Algorithm?
 A sequence alignment algorithm, that computes the best alignment score between two sequences. It penalizes mismatches and gaps in the sequence, as you shall see below.
 
 Setup:

@@ -108,9 +108,10 @@ def average_score(score, human_seq, fly_seq):
 def grand_average(input_array):
     """
     Returns average alignment score.
-    :param input_array: A float array.
+    :param input_array: A float array. Length normalized scores in it.
     :return: Average alignment score.
     """
+    # This is the average alignment score, the "Gene Deviation Score" (computed from a list of length normalized scores)
     return np.average(input_array)
 
 

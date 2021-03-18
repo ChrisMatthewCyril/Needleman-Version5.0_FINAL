@@ -1,5 +1,6 @@
 import os
 import collections
+
 from fpdf import FPDF
 import datetime
 from matplotlib import pyplot as py
@@ -19,7 +20,15 @@ pathlib: Helps me deal with paths regardless of operating systems. There are dif
 easy.
 '''
 
-# File paths below.
+# User-defined file paths below.
+"""
+Databank_source: The filepath of the databank folder. This contains the reference sequences.
+report_filename: User-defined report name.
+report_dest: User-defined report destination. Note, all graphs will be deposited here.
+BMAL_filepath: Location of BMAL1 .fasta file.
+CYCLE_filepath: Location of CYCLE .fasta file.
+final_destination: a string for internal use, used to create directory in prepare_report() method
+"""
 DataBank_source = ""
 report_filename = ""
 report_dest = ""
@@ -27,6 +36,11 @@ BMAL_filepath = ""
 CYC_filepath = ""
 final_destination = ""
 
+"""
+gene_pair_scores: Dictionary to hold pairing names and scores.
+gene_len_score: Dictionary to hold pairing lengths and scores.
+Other variable functions may be inferred as per name.
+"""
 # Arrays below hold information for plotting later on. The variables are simply initialized.
 gene_pair_scores = {}
 gene_len_score = {}
@@ -53,6 +67,12 @@ def add_pair_score(filename1, filename2, score):
 
 # This will be used to plot length vs. score later on in the code. Adds to the gene_len_score list for later use.
 def add_length_data(average_length, score):
+    """
+    Appends average length between fly and human seq, with corresponding score.
+    :param average_length: The average length between a fly and human gene.
+    :param score: Needleman-Wunsch score.
+    :return: Nothing.
+    """
     gene_len_score[average_length] = score
 
 
@@ -95,23 +115,32 @@ def prepare_report():
     pdf.write(h=1, txt="\nCYCLE Filepath: " + CYC_filepath)
     pdf.write(h=1, txt="\nThis report can be found at: " + str(final_destination))
     pdf.set_text_color(0, 255, 255)
-    pdf.write(h=1, txt="\nGitHub Link To Code", link="https://github.com/ChrisMatthewCyril/Needleman/tree/Version3.0")
+    pdf.write(h=1, txt="\nGitHub Link To Code", link="https://github.com/ChrisMatthewCyril/Needleman-Version5.0_FINAL/tree/Version5.1")
     pdf.set_text_color(0, 0, 0)
 
+    # Writing Gene Deviation score and number of gene pairs used.
     pdf.write(h=1, txt="\nCalculated Gene Deviation Score: " + str(gene_deviation_score))
     pdf.write(h=1, txt="\n Number of Gene pairs: " + str(num_pairs))
-    pdf.add_page(orientation="P")
+    pdf.add_page(orientation="landscape")
 
+    # Begin table of gene pairings with alignment scores.
     pdf.set_font('Arial', style='B')
     pdf.cell(w=14, h=1, txt="Compared Files", border=1, ln=0, align='L', fill=False)
-    pdf.cell(w=6, h=1, txt="Needleman-Wunsch Score", border=1, ln=1, align='L', fill=False)
+    pdf.cell(w=6, h=1, txt="Length Normalized Score", border=1, ln=0, align='L', fill=False)
+    pdf.cell(w=6, h=1, txt="Group Code for Bar Chart", border=1, ln=1, align='L', fill=False)
     pdf.set_font('Arial', style='')
 
+
+    # Making a G-list, groupings, so you can refer to this as a key for the Bar Chart. Counter initialized to 0
+    g_list = ["G"+str(x) for x in range(1, num_pairs+1)]
+    count = 0
     # Making table of gene pairings with alignment scores.
     for first_file, second_file in gene_pair_scores:
         pdf.cell(w=14, h=1, txt=first_file + " vs " + second_file, border=1, ln=0,
                  align='L', fill=False)
-        pdf.cell(w=6, h=1, txt=str(gene_pair_scores[(first_file, second_file)]), border=1, ln=1, align='R', fill=False)
+        pdf.cell(w=6, h=1, txt=str(gene_pair_scores[(first_file, second_file)]), border=1, ln=0, align='L', fill=False)
+        pdf.cell(w=6, h=1, txt=g_list[count], border=1, ln=1, align='L', fill=False)
+        count += 1
 
     # Making bar and line charts.
 
@@ -119,7 +148,6 @@ def prepare_report():
     linechart_path = plot_line()
 
     # Adding the bar and line chart images from their links on the computer.
-    pdf.add_page(orientation='landscape')
     pdf.image(barchart_path, h=20, w=27)
     pdf.image(linechart_path, h=20, w=27)
     pdf.add_page(orientation='portrait')
@@ -133,7 +161,7 @@ def prepare_report():
     # Thank you! Close-out message.
     print("Thanks for an amazing quarter, Professor Schiffer and the TA's!\n"
           "Best, as always,\nChris Matthew Cyril :) \n"
-          "Don't forget to pick up your report! You can find it at: " + str(pdf_location))
+          "Don't forget to pick up your report! You can find it at: " + str(pdf_location) + ".pdf")
 
 
 # Plots a bar chart, shows up on the console. Also saves the figure to the user-specified directory. Returns path.
@@ -142,15 +170,18 @@ def plot_bar():
     Plots a high-resolution bar chart of the different pairings and the length-normalized alignment scores.
     :return: Filepath of the bar chart.
     """
-    name_list = [tuple[0] + "\n vs \n" + tuple[1] for tuple in gene_pair_scores.keys()]
-    py.bar(name_list, gene_pair_scores.values())
-    py.xticks(fontsize=8)
+    # Generate group names for use in bar chart. Plot with length-normalized scores.
+    py.bar([("G"+str(x)) for x in range(1, num_pairs+1)], gene_pair_scores.values())
+
+    # Title and labels.
     py.ylabel("Needleman-Wunsch Length Normalized Score")
     py.title("Comparison Pairings vs Length-Normalized Scores")
     global final_destination
     filename = final_destination / "BarChart.jpg"
-    print("Please wait, generating high-resolution bar chart...")
-    py.savefig(filename, dpi=4500, orientation='landscape')
+    print("Please wait, generating high-resolution bar chart...") # Print status message to console,
+
+    # Save image                                                  # so user knows what's going on.
+    py.savefig(filename, dpi=4500, orientation='landscape') # Save file.
     print("Done.\n")
     py.show()
     return str(filename)
@@ -163,15 +194,21 @@ def plot_line():
     :return: Filepath of the line chart.
     """
     global final_destination
-    filename = final_destination / "LineChart.jpg"
-    sorted_list = collections.OrderedDict(sorted(gene_len_score.items()))
-    py.plot(sorted_list.keys(), sorted_list.values())
+    filename = final_destination / "LineChart.jpg" # set destination
+    sorted_list = collections.OrderedDict(sorted(gene_len_score.items())) # sort list for orderly line chart
+    py.plot(sorted_list.keys(), sorted_list.values()) # plot line chart (x vs y)
+
+    # Labeling below
     py.xlabel("Average Length of Pairings (bases)")
-    py.ylabel("Needleman-Wunsch Length Normalized Score")
+    py.ylabel("Needleman-Wunsch RAW Score")
     py.title("Average Length of Pairings vs Length-Normalized Scores")
+
+    # Print status message to console, to user knows what's going on.
     print("Please wait, generating high-resolution line chart...")
+    # Save line chart to user-defined directory.
     py.savefig(filename, dpi=4500, orientation='landscape')
     print("Done.\n")
+    # Display line chart to console window.
     py.show()
 
     return str(filename)

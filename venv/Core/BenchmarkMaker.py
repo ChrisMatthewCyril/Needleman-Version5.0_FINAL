@@ -42,17 +42,18 @@ def run_program(repository):
         print("Computing alignment score between: " + human_key + " and " + fly_key)
         needle_scores[human_key + " vs " + fly_key] = sc.compare_seqs(human_seqs_dict[human_key],
                                                                       fly_seqs_dict[fly_key])
-        # Now I'm recording this new addition!
-        # This might get a little confusing so I'm gonna explain
-        # The first statement below will give me data for a histogram.
-        # The second statement computes the average length of the two seqs and passes it as well as the score
-        rec.add_pair_score(human_key, fly_key, needle_scores[human_key + " vs " + fly_key])
+        # Now I'm recording this new score, by passing it to the Recorder object.
+        # This is for the line chart.
         rec.add_length_data(len(human_seqs_dict[human_key]) + len(fly_seqs_dict[fly_key]) / 2,
                             needle_scores[human_key + " vs " + fly_key])
 
     # Now we need to compute the average normalized scores for each pairing
     average_per_pair = sc.average_score(list(needle_scores.values()), list(human_seqs_dict.values()),
                                         list(fly_seqs_dict.values()))
+
+    # Loop through and pass the length normalized scores to the recorder for bar charting!
+    for score, human_key, fly_key in zip(average_per_pair, human_seqs_dict, fly_seqs_dict):
+        rec.add_pair_score(human_key, fly_key, score)
 
     # Now we need to compute the grand average
     global benchmark_average

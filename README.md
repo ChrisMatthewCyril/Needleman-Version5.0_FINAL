@@ -23,7 +23,7 @@ RESULTS: Printed in a PDF file! The link is in the console window!
 
 ===================================================================
 
-Introduction
+## Introduction
 
 Scientific Question:
 "Are BMAL1 and CYCLE orthologs?"
@@ -47,8 +47,8 @@ Using my intuition, I then pulled 10 pairs of genes from the NBCI's gene databas
 This is the "gold standard." 
 
 I know that BMAL1 and CYCLE are orthologs, as described above. I compute a length-normalized needleman-wunsch alignment score for this pairing, then check to make sure that it is within 5% fo the Gene Deviation Score I computed above.
-
 See analysis for more!
+
 ===============================================================================================================================================================
 
 Scientific Hypothesis:
@@ -112,13 +112,13 @@ NCBI = National Center for Biotechnology Information.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Section 2: Loading Packages
+## Section 2: Loading Packages
 
 Please see comments in code, located at venv/Core/.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Section 3: Performing Bioinformatics Analysis
+## Section 3: Performing Bioinformatics Analysis
 
 This code works extensively with the data type: .fasta
 
@@ -161,7 +161,7 @@ References:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Section 4: Plotting the results
+## Section 4: Plotting the results
 
 Data Analysis Method:
 After computing the following:
@@ -185,7 +185,7 @@ I highly recommend checking the comments found in the file venv/Core/Recorder.py
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Section 5: Analysis
+## Section 5: Analysis
 
 I know the truth – BMAL1 and CYCLE are orthologs. However, my program does not catch this. I have identified a few reasons why. 
 

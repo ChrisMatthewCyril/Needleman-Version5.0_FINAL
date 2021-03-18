@@ -25,10 +25,10 @@ RESULTS: Printed in a PDF file! The link is in the console window!
 
 ## Introduction
 
-Scientific Question:
+###### Scientific Question:
 "Are BMAL1 and CYCLE orthologs?"
 
-Background:
+###### Background:
 During the course of evolution, phylogenetic splits occurred. These gave rise to the different kingdoms. Thus, we share a lot of common features with other species. For instance, consider the human hand and the flipper of a whale. Although a whale's flipper may very well be over 3 times the size of an entire human, the skeletal structure is extremely similar. Just bigger, and probably has a few bones fused together for strength, yet similar nonetheless. This suggests common ancestry.
 
 It is no surprise then, that we also share many GENES with other animals and insects. Sometimes, scientists are lucky, and they find two genes with the same names and the same functions in two different species. Like the fruitfly, Drosophila Melanogaster and humans, Homo Sapiens. Scientists name genes according to their function. For instance, the CLOCK gene in the fruitfly was named because of its role in the circadian rhythm. CLOCK stands for: "circadian locomoter output cycles protein kaput." (1) BMAL1, whose official name is "aryl hydrocarbon receptor nuclear translocator like," was discovered animals. (2) It turns out that BMAL1 is involved in the circadian clock, and is very much alike to the CLOCK protein found in flies. (3)
@@ -41,7 +41,7 @@ This begs the question: "Are there other orthologs like BMAL1 and CLOCK?" the an
 
 I used (5) as a source list of human genes, then used my intution to guess which ones would have fly counterparts. (More information in the Analysis section below)
 
-Where is the data from? 
+###### Where is the data from? 
 Using my intuition, I then pulled 10 pairs of genes from the NBCI's gene database at https://www.ncbi.nlm.nih.gov/gene/ – human, and fly. These genes have the same names, and are known to have the same functions. I compute the alignment scores between each pairing, normalize them for length, then average all these length-normalized scores to arrive at the "Gene Deviation Score."
 
 This is the "gold standard." 
@@ -51,10 +51,10 @@ See analysis for more!
 
 ===============================================================================================================================================================
 
-Scientific Hypothesis:
+###### Scientific Hypothesis:
 "If the alignment score between BMAL1 and CYCLE is within 5% of the gene deviation score, then they are orthologs according to my bioinformatics model."
 
-Analyses and How Data was Downloaded:
+###### Analyses and How Data was Downloaded:
 Only one analysis was performed: A needleman-wunsch alignment. The result were plotted in two forms:
 1. Bar Chart, displaying the relationship between the human and fly sequence pairings and the length-normalized alignment score.
 2. Line Chart, displaying the relationship between the average length of the pairings and the alignment score.
@@ -65,7 +65,7 @@ This process was repeated for every gene found, with care taken to ensure that i
 
 ===============================================================================================================================================================
 
-WHAT IS THE NEEDLEMAN WUNSCH ALGORITHM?
+###### What is the Needleman-Wunsche Algorithm?
 A sequence alignment algorithm, that computes the best alignment score between two sequences. It penalizes mismatches and gaps in the sequence, as you shall see below.
 
 Setup:
@@ -94,13 +94,13 @@ which one it' using. In this project, it stuck to the Needleman-Wunsch algorithm
 
 ===============================================================================================================================================================
 
-ANALYSES:
+###### Analyses:
 1. Bar chart, plotting the length-normalized needleman wunsch alignment score for the different pairings.
 2. Line chart, plotting the relationship between average pairing length, i.e., human gene length and fly gene length average, vs. raw needleman-wunsch alignment score.
 3. Table, with ength-normalized needleman wunsch alignment score for the different pairings.
 
 ===============================================================================================================================================================
-References:
+###### References:
 1. https://www.ncbi.nlm.nih.gov/gene?Db=gene&Cmd=DetailsSearch&Term=9575
 2. https://www.ncbi.nlm.nih.gov/gene?Db=gene&Cmd=DetailsSearch&Term=406
 3. "Mammalian Clock 20201103.rec.pdf" Susan Golden and Michael Goldman, BIMM 116 FALL 2020. I took this class last quarter! Still remember quite a few details.
@@ -124,7 +124,7 @@ Simply put, it is a text file with sequences. Importantly, there might be multip
 
 ================================================================================================================================================================================
 
-WHAT IS THE NEEDLEMAN WUNSCH ALGORITHM?
+###### What is the Needleman Wunssche Algorithm?
 A sequence alignment algorithm, that computes the best alignment score between two sequences. It penalizes mismatches and gaps in the sequence, as you shall see below.
 
 Setup:
@@ -151,14 +151,14 @@ In practice, BioPython, a collection of BioInformatics methods for the Python pr
 
 ================================================================================================================================================================================
 
-References:
+###### References:
 1. https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=BlastHelp
 2. 'Video: From Dot Plots to BLAST' Jamie Schiffer. https://canvas.ucsd.edu/courses/24319/assignments/250086?module_item_id=662582
 
 
 ## Section 4: Plotting the results
 
-Data Analysis Method:
+###### Data Analysis Method:
 After computing the following:
 
 (1) Needleman-Wunsch Alignment Score
@@ -192,7 +192,7 @@ Fourth, my tolerance of 5% might have been too harsh considering the limited dat
            
 My proposed solution would be to sample more genes, find better alignments by going through each sequence that we have, then separate them into length-based clusters, since it is possible that gene length plays a critical role in the accuracy of my results. The prediction tool can then first compute sequence lengths and apply a more customized algorithm which takes into account the length of the gene, and I hope that this will be better at predicting whether two genes are orthologs, or not!
 
-References for this section:
+###### References for this section:
 (1) My brain :P
 (2)https://genomics.senescence.info/genes/allgenes.php
 

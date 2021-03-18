@@ -1,6 +1,5 @@
 # Project Needleman
-## If you need help!
-Please look at venv/Guidebook for screenshots!
+## If you need help, please look at venv/Guidebook for screenshots!
 
 BIMM 143 Project
 

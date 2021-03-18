@@ -88,7 +88,7 @@ def compare_seqs(human_seq, fly_seq):
 
 def average_score(score, human_seq, fly_seq):
     """
-    Computes the average score between homo sapiens and drosophila melanogaster pairings.
+    Computes the length-normalized average score between homo sapiens and drosophila melanogaster pairings.
     :param score: Array of Needleman-Wunsch scores.
     :param human_seq: Array of homo sapien sequences. (Yes, the loooong sequence is in here)
     :param fly_seq:  Array of drosophile melanogaster sequences.
@@ -99,6 +99,7 @@ def average_score(score, human_seq, fly_seq):
 
     # Loop through zipped human and fly seq lists
     for a, b, c in zip(score, human_seq, fly_seq):
+        # Length normalization means (length of human seq + length of fly seq) / 2
         average = a/((len(b)+len(c))/2)
         average_array.append(average)
 

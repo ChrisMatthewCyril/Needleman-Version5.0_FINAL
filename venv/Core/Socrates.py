@@ -6,8 +6,8 @@ import os
 import numpy as np
 
 """
-Bio: BioPython module. Has a plethora of useful Bioinformatics tools. SeqIO helps me read seqs and align helps me align 
-them.
+Bio: BioPython module. Has a plethora of useful Bioinformatics tools. SeqIO helps me read seqs and 
+Align helps me align them using the Pairwise Aligner
 OS: Lets me go through the computer's file directory and read data from the DataBank folder that you NEED!
 numpy: Useful math functions.
 
@@ -77,9 +77,11 @@ def compare_seqs(human_seq, fly_seq):
     :param fly_seq: The drosophila melanogaster sequence.
     :return: Alignment score.
     """
-    align_machine = Align.PairwiseAligner()
-    align_machine.mode = 'global'
-    alignment = align_machine.align(human_seq, fly_seq)
+    align_machine = Align.PairwiseAligner() # Note, I CANNOT change the algorithm of the pairwise aligner, it is
+    # hardcoded to be automatically chosen. However, it serendipitously uses Needleman-Wunsch in my trials.
+    align_machine.mode = 'global' # Setting alignment mode to global alignment
+    alignment = align_machine.align(human_seq, fly_seq) # Get alignment
+    # Next, print the alignment algorithm to console screen, so user knows what's going on.
     print("Using " + align_machine.algorithm + " algorithm. Alignment score: ", alignment.score, "\n\n")
     return alignment.score
 
@@ -93,7 +95,9 @@ def average_score(score, human_seq, fly_seq):
     :return: Array of average scores, computed per pair.
     """
 
-    average_array = []
+    average_array = [] # to store average lengths between human and fly sequences.
+
+    # Loop through zipped human and fly seq lists
     for a, b, c in zip(score, human_seq, fly_seq):
         average = a/((len(b)+len(c))/2)
         average_array.append(average)

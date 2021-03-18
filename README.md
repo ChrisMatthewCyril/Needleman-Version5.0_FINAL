@@ -21,8 +21,6 @@ Were we correct? Does this paradigm work? I hope so. Let's find out!
 
 RESULTS: Printed in a PDF file! The link is in the console window!
 
-===================================================================
-
 ## Introduction
 
 ###### Scientific Question:
@@ -49,7 +47,6 @@ This is the "gold standard."
 I know that BMAL1 and CYCLE are orthologs, as described above. I compute a length-normalized needleman-wunsch alignment score for this pairing, then check to make sure that it is within 5% fo the Gene Deviation Score I computed above.
 See analysis for more!
 
-===============================================================================================================================================================
 
 ###### Scientific Hypothesis:
 "If the alignment score between BMAL1 and CYCLE is within 5% of the gene deviation score, then they are orthologs according to my bioinformatics model."
@@ -62,8 +59,6 @@ Only one analysis was performed: A needleman-wunsch alignment. The result were p
 Data was downloaded from the NCBI's repository under the search type "GENE." 
 For example, I pulled the BMAL1 file from: "https://www.ncbi.nlm.nih.gov/gene/406" by clicking on the fasta button on the webpage.
 This process was repeated for every gene found, with care taken to ensure that it was from the right species.
-
-===============================================================================================================================================================
 
 ###### What is the Needleman-Wunsche Algorithm?
 A sequence alignment algorithm, that computes the best alignment score between two sequences. It penalizes mismatches and gaps in the sequence, as you shall see below.
@@ -92,14 +87,10 @@ In practice, BioPython, a collection of BioInformatics methods for the Python pr
 This program uses the Pairwise Aligner, from Bio.Align. (6) Since the pairwise aligner automatically chooses the best algorithm to compute the alignment, I make it print out
 which one it' using. In this project, it stuck to the Needleman-Wunsch algorithm.
 
-===============================================================================================================================================================
-
 ###### Analyses:
 1. Bar chart, plotting the length-normalized needleman wunsch alignment score for the different pairings.
 2. Line chart, plotting the relationship between average pairing length, i.e., human gene length and fly gene length average, vs. raw needleman-wunsch alignment score.
 3. Table, with ength-normalized needleman wunsch alignment score for the different pairings.
-
-===============================================================================================================================================================
 ###### References:
 1. https://www.ncbi.nlm.nih.gov/gene?Db=gene&Cmd=DetailsSearch&Term=9575
 2. https://www.ncbi.nlm.nih.gov/gene?Db=gene&Cmd=DetailsSearch&Term=406
@@ -121,8 +112,6 @@ This code works extensively with the data type: .fasta
 Directly quoting the NCBI, "A sequence in FASTA format begins with a single-line description, followed by lines of sequence data. The description line (defline) is distinguished from the sequence data by a greater-than (">") symbol at the beginning. It is recommended that all lines of text be shorter than 80 characters in length." (1)
 
 Simply put, it is a text file with sequences. Importantly, there might be multiple sequences of the same gene withing a file. Due to limitations on computing power, and for the sake of time, I've chosen to use the first sequence of each file. 
-
-================================================================================================================================================================================
 
 ###### What is the Needleman Wunssche Algorithm?
 A sequence alignment algorithm, that computes the best alignment score between two sequences. It penalizes mismatches and gaps in the sequence, as you shall see below.
@@ -148,8 +137,6 @@ Protocol:
 All information from: (2) below.
 
 In practice, BioPython, a collection of BioInformatics methods for the Python programming language, uses a Needleman-Wunsch score alignment algorithm.
-
-================================================================================================================================================================================
 
 ###### References:
 1. https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=BlastHelp

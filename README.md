@@ -1,5 +1,6 @@
 # Project Needleman
 ## If you need help, please look at venv/Guidebook for screenshots!
+Find it at: https://github.com/ChrisMatthewCyril/Needleman-Version5.0_FINAL/tree/Version5.1/venv
 
 BIMM 143 Project
 

@@ -1,10 +1,10 @@
 # Project Needleman
+## If you need help!
+Please look at venv/Guidebook for screenshots!
+
 BIMM 143 Project
 
 HOW TO RUN THIS: My recommendation is PyCharm. Please run the file "Decipher.py." Bear in mind that you'll have to provide the links to folders and files that the program requests. Super easy, please look at the images in the "guide" folder.  To copy the full filepath, use Shift+Command+C and don't forget your forward or backslashes! (Depends if you're using Windows or Mac OS)
-
-## If you need help!
-Please look at venv/Guidebook for screenshots!
 
 Anyway... Goal: To be able to analyze two gene sequences from two different organisms, and be able to predict whether they are orthologs.
 

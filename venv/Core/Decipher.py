@@ -51,11 +51,11 @@ cycle_seq = sc.get_first_seq(cycle_filepath)
 # Compare sequences and get alignment score.
 score = sc.compare_seqs(bmal1_seq, cycle_seq)
 
-# Normalize it for the length.
+# Normalize it for the length. Then record it by passing to the Recorder.
 average_score = sc.find_average(score, bmal1_seq, cycle_seq)
 recorder.bmal_vs_cycle = average_score
 
-# Check if the calculated length is within 5% of the goal standard.
+# Check if the calculated length is within 5% of the goal standard. Also print to console, so user is not clueless.
 if standard-(0.05 * standard) >= average_score >= standard+(0.05 * standard):
     print("According to the program, BMAL1 and CYCLE are orthologs.\n Writing Report...")
     # Tells recorder that the program has also determined the truth.

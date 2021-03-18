@@ -1,13 +1,13 @@
 # Needleman
 BIMM 143 Project
 
-HOW TO RUN THIS: My recommendation is PyCharm. Download the code and run it via PyCharm. The IDE is well organized (I believe they built it off Jetbrains.)
+HOW TO RUN THIS: My recommendation is PyCharm. Please run the file "Decipher.py." Bear in mind that you'll have to provide the links to folders and files that the program requests. Super easy, please look at the images in the "guide" folder.  To copy the full filepath, use Shift+Command+C and don't forget your forward or backslashes! (Depends if you're using Windows or Mac OS)
 
 Anyway... Goal: To be able to analyze two gene sequences from two different organisms, and be able to predict whether they are orthologs.
 
 This project has two phases: a setup and a test.
 
-MODULES Socrates.py is the brain of this project. I've used biopython to write methods. BenchmarkMaker.py is the setup phase. Decipher.py is the file you should run. Recorder.py surprise.... RECORDS INFORMATION!!!! :P ReporterTester.py is a misnomer, but it tests the Recorder file.
+MODULES Socrates.py is the brain of this project. I've used biopython to write its methods. BenchmarkMaker.py is the setup phase. Decipher.py is the file you should run. Recorder.py... records information! (surprise, surprise) :P ReporterTester.py is a misnomer, but it tests the Recorder file, it's a little embarassing, but feel free to take a look.
 
 FOLDERS
 

@@ -60,7 +60,7 @@ Data was downloaded from the NCBI's repository under the search type "GENE."
 For example, I pulled the BMAL1 file from: "https://www.ncbi.nlm.nih.gov/gene/406" by clicking on the fasta button on the webpage.
 This process was repeated for every gene found, with care taken to ensure that it was from the right species.
 
-## What is the Needleman-Wunsche Algorithm?
+## What is the Needleman-Wunsch Algorithm?
 A sequence alignment algorithm, that computes the best alignment score between two sequences. It penalizes mismatches and gaps in the sequence, as you shall see below.
 
 Setup:
